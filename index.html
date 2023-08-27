@@ -2148,7 +2148,7 @@
                                   id="systemInput"></textarea>
                     </div>
                     <div>
-                        <span>character</span>
+                        <span>character (top_p)</span>
                         <input type="range" id="top_p" min="0" max="1" value="0.7" step="0.05"/>
                         <div class="selectDef">
                             <span>Accurate and rigorous</span>
@@ -2156,14 +2156,14 @@
                         </div>
                     </div>
                     <div>
-                        <span>answer quality</span>
+                        <span>answer quality (Temperature)</span>
                         <input type="range" id="temp" min="0" max="2" value="1" step="0.05"/>
                         <div class="selectDef">
                             <span>repeat conservation</span>
                             <span>nonsense</span>
                         </div>
                     </div>
-                    <div>
+                    <div style="display: none;">
                         <span>session width</span>
                         <input type="range" id="convWidth" min="30" max="100" value="100" step="1"/>
                         <div class="selectDef">
@@ -2179,14 +2179,14 @@
                             <span>quick</span>
                         </div>
                     </div>
-                    <div>
+                    <div style="display: none;">
                         <span class="inlineTitle">continuous dialogue</span>
                         <label class="switch-slide">
                             <input type="checkbox" id="enableCont" checked="true" hidden/>
                             <label for="enableCont" class="switch-slide-label"></label>
                         </label>
                     </div>
-                    <div>
+                    <div style="display: none;">
                         <span class="inlineTitle">long reply</span>
                         <label class="switch-slide">
                             <input type="checkbox" id="enableLongReply" hidden/>
@@ -4604,7 +4604,7 @@
   const initSetting = (force = false) => {
     const modelEle = document.getElementById("preSetModel");
     let localModel = localStorage.getItem("modelVersion");
-    modelVersion = modelEle.value = localModel || "gpt-3.5-turbo";
+    modelVersion = modelEle.value = localModel || "gpt-4";
     modelEle.onchange = () => {
       modelVersion = modelEle.value;
       localStorage.setItem("modelVersion", modelVersion);
