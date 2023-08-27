@@ -2148,7 +2148,7 @@
                                   id="systemInput"></textarea>
                     </div>
                     <div>
-                        <span>character (top_p)</span>
+                        <span>randomness</span>
                         <input type="range" id="top_p" min="0" max="1" value="0.7" step="0.05"/>
                         <div class="selectDef">
                             <span>Accurate and rigorous</span>
@@ -2171,7 +2171,7 @@
                             <span>100%</span>
                         </div>
                     </div>
-                    <div>
+                    <div style="display: none;">
                         <span>typewriter speed</span>
                         <input type="range" id="textSpeed" min="0" max="100" value="88" step="1"/>
                         <div class="selectDef">
@@ -3371,7 +3371,7 @@
   let roleNature; // 角色性格
   let roleTemp; // 回答质量
   let convWidth = []; // 会话宽度，0:窗口宽度，1:全屏宽度
-  let textSpeed; // 打字机速度，越小越快
+  let textSpeed; // Typewriter speed, the smaller the faster
   let enableCont; // 是否开启连续对话，默认开启，对话包含上下文信息。
   let enableLongReply; // 是否开启长回复，默认关闭，开启可能导致api费用增加。
   let longReplyFlag;
@@ -4751,9 +4751,11 @@
     let localSpeed = localStorage.getItem("textSpeed");
     speedEle.value = localSpeed || speedEle.getAttribute("value");
     textSpeed = parseFloat(speedEle.min) + (speedEle.max - speedEle.value);
+    localStorage.setItem("textSpeed", speedEle.max);
     speedEle.oninput = () => {
       speedEle.style.backgroundSize = (speedEle.value - speedEle.min) * 100 / (speedEle.max - speedEle.min) + "% 100%";
       textSpeed = parseFloat(speedEle.min) + (speedEle.max - speedEle.value);
+      textSpeed = 100;
       localStorage.setItem("textSpeed", speedEle.value);
     }
     speedEle.dispatchEvent(new Event("input"));
@@ -4926,7 +4928,7 @@
   }
   let delayId;
   const delay = () => {
-    return new Promise((resolve) => delayId = setTimeout(resolve, textSpeed)); //打字机时间间隔
+    return new Promise((resolve) => delayId = setTimeout(resolve, textSpeed)); //typewriter time lapse
   }
   const uuidv4 = () => {
     let uuid = ([1e7] + 1e3 + 4e3 + 8e3 + 1e11).replace(/[018]/g, c =>
