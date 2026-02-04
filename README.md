@@ -1,10 +1,9 @@
 # chatgpt-web
-Pure Javascript ChatGPT demo based on OpenAI API ChatGPT project implemented in pure JS, based on OpenAI API Deploy an HTML file to use
+ ChatGPT demo based on OpenAI API ChatGPT project implemented in JS, based on OpenAI API Deploy an HTML file to use
 
 ![](https://raw.githubusercontent.com/pamirk/chatgpt-web-main/main/example.png)
-https://github.com/chatgpt-web-main/blob/main/example.png
 ## Demo
-Online preview (https://chatgpt-web-main-zeta.vercel.app/) (OpenAI interface and API key need to be configured for use)
+Online preview ([https://chatgptopenai.vercel.app/](https://chatgptopenai.vercel.app/)) (OpenAI interface and API key need to be configured for use)
 
 ## Usage
 1. Clone the project
